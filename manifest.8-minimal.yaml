@@ -1,0 +1,31 @@
+variables:
+  rltype: minimal
+  stream: devel
+  prod: false
+
+releasever: 8
+
+repovars:
+  rltype: ${rltype}
+
+include:
+  - manifests/rocky-common.yaml
+  - manifests/fixes.yaml
+  - manifests/dnf-groups/Minimal_Install.yaml
+
+arch-include:
+  x86_64: manifests/arch/x86_64.yaml
+  aarch64: manifests/arch/aarch64.yaml
+
+exclude-packages:
+  - plymouth #mainly for debugging
+
+postprocess:
+  - |
+    #!/usr/bin/env bash
+    set -xeuo pipefail
+
+    # Disable services
+    systemctl disable rdisc.service
+    systemctl disable sshd.service
+    systemctl disable sssd-nss.socket

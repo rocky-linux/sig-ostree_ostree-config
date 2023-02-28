@@ -1,0 +1,87 @@
+# Packages from @Core
+#
+# Exclusions:
+# dnf - Replaced by rpm-ostree
+# yum - Replaced by rpm-ostree
+# dnf-plugins-core - Removed since we don't install dnf
+# plymouth - Removed because rpm-ostree compose can't seem to find it
+
+packages:
+# Mandatory
+  - NetworkManager
+  - audit
+  - basesystem
+  - bash
+  - coreutils
+#  - cronie
+  - curl
+  - e2fsprogs
+  - filesystem
+  - firewalld
+  - glibc
+#  - grubby
+  - hostname
+#  - initscripts
+  - iproute
+  - iprutils
+  - iputils
+#  - irqbalance
+  - kbd
+#  - kexec-tools
+  - less
+  - man-db
+  - ncurses
+  - openssh-clients
+  - openssh-server
+#  - parted
+  - passwd
+  - policycoreutils
+  - procps-ng
+  - rootfiles
+#  - rsyslog
+  - selinux-policy-targeted
+  - setup
+  - shadow-utils
+  - sssd-common
+#  - sssd-kcm
+  - sudo
+  - systemd
+#  - tuned
+  - util-linux
+  - vim-minimal
+#  - xfsprogs
+# Default
+#  - NetworkManager-team
+#  - NetworkManager-tui
+#  - authselect
+#  - biosdevname
+#  - dracut-config-rescue
+#  - iwl100-firmware
+#  - iwl1000-firmware
+#  - iwl105-firmware
+#  - iwl135-firmware
+#  - iwl2000-firmware
+#  - iwl2030-firmware
+#  - iwl3160-firmware
+#  - iwl5000-firmware
+#  - iwl5150-firmware
+#  - iwl6000-firmware
+#  - iwl6000g2a-firmware
+#  - iwl6050-firmware
+#  - iwl7260-firmware
+#  - kernel-tools
+#  - libsysfs
+  - linux-firmware
+#  - lshw
+#  - lsscsi
+#  - microcode_ctl
+  - prefixdevname
+#  - sg3_utils
+#  - sg3_utils-libs
+# Optional
+#  - dracut-config-generic
+#  - dracut-network
+#  - initial-setup
+#  - rdma-core
+#  - selinux-policy-mls
+#  - tboot

@@ -1,0 +1,22 @@
+# Anything specific to making x86_64 work
+packages:
+  - grub2-efi-ia32
+  - grub2-efi-x64
+  - grub2-pc
+  - ostree-grub2
+  - efibootmgr
+  - shim-ia32
+  - shim-x64
+  - microcode_ctl
+  - mcelog
+
+# The following packages are specified in a repo specific way.
+# This prevents us from needing to use repo config priorities.
+# Note: This is not necessary for "normal" packages, but will become useful for SIG packages,
+# such as raspberry pi kernel. Doing it now sets a standard and documents the approach.
+repo-packages:
+  - packages:
+      - kernel
+      - kernel-modules
+      - kernel-modules-extra
+    repo: baseos

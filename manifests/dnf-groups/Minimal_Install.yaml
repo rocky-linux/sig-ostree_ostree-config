@@ -1,0 +1,9 @@
+# Packages from @Minimal Install
+#
+# Exclusions:
+# see included manifests
+
+include:
+  - Core.yaml
+  - Standard.yaml
+  - Guest_Agents.yaml

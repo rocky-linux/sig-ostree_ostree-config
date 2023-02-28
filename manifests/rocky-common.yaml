@@ -1,0 +1,47 @@
+# Common rpm-ostree compose settings belong here.
+ref: rockylinux/${releasever}/${basearch}/${rltype}/${stream}
+
+rojig:
+  name: rocky-ostree-config
+  summary: "Rocky Linux OSTree ${releasever}-${rltype}-${stream}"
+  license: MIT
+
+repos:
+  - baseos
+  - appstream
+
+automatic_version_prefix: "${releasever}/${rltype}/${stream} <date:%Y.%m>"
+boot-location: modules
+cliwrap: true
+default_target: multi-user.target
+documentation: false
+mutate-os-release: "${releasever}-${rltype}-${stream}"
+readonly-executables: true
+selinux: true
+tmp-is-dir: true
+recommends: false
+etc-group-members:
+  - wheel
+
+ignore-removed-users:
+  - root
+ignore-removed-groups:
+  - root
+
+check-passwd:
+  type: file
+  filename: passwd
+check-groups:
+  type: file
+  filename: group
+
+units:
+  - getty@tty1.service
+
+# Packages required by Rocky OSTree
+packages:
+  - rocky-gpg-keys
+  - rocky-release
+  - rocky-repos
+  - rocky-logos
+  - rpm-ostree

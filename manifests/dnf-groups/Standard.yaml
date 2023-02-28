@@ -1,0 +1,97 @@
+# Packages from @Standard
+#
+# Exclusions:
+# kpatch-dnf - Removed since we don't install dnf
+# plymouth - Removed because rpm-ostree compose can't seem to find it
+#
+# Exlusions due to %post issues: See https://bugzilla.redhat.com/show_bug.cgi?id=1352154#c6 & https://ostreedev.github.io/ostree/adapting-existing/
+# kmod-kvdo
+# vdo (installs kmod-kvdo)
+# psacct
+
+packages:
+# Mandatory
+  - acl
+#  - at
+  - attr
+  - bc
+  - cpio
+#  - crontabs
+#  - cyrus-sasl-plain
+#  - dbus
+#  - ed
+  - file
+  - iptstate
+#  - irqbalance
+#  - kpatch
+  - logrotate
+  - lsof
+  - mcelog
+#  - microcode_ctl
+#  - net-tools
+  - pciutils
+  - quota
+  - rocky-release
+#  - rsyslog-gnutls
+#  - rsyslog-gssapi
+#  - rsyslog-relp
+  - sudo
+#  - symlinks
+  - systemd-udev
+  - tar
+  - tree
+#  - util-linux-user
+# Default
+  - bash-completion
+#  - blktrace
+#  - bpftool
+  - bzip2
+  - chrony
+#  - cockpit
+  - cryptsetup
+#  - dos2unix
+#  - dosfstools
+  - ethtool
+#  - fprintd-pam
+  - gnupg2
+#  - ledmon
+#  - libstoragemgmt
+  - lvm2
+#  - mailcap
+  - man-pages
+  - mdadm
+#  - mlocate
+  - mtr
+  - nano
+#  - nmap-ncat
+#  - nvme-cli
+#  - pinfo
+#  - plymouth
+  - realmd
+  - rsync
+#  - smartmontools
+  - sos
+  - sssd
+#  - strace
+#  - tcpdump
+#  - teamd
+  - time
+  - unzip
+  - usbutils
+#  - vim-enhanced
+#  - virt-what
+  - wget
+  - which
+#  - xfsdump
+  - zip
+# Optional
+#  - cifs-utils
+#  - cockpit-doc
+#  - fwupd
+#  - fwupdate
+#  - ima-evm-utils
+#  - nfs-utils
+#  - nvmetcli
+#  - traceroute
+#  - vdo-support
+#  - zsh

@@ -1,0 +1,8 @@
+<%page args="default_ref, remote_url"/>
+append usr/share/anaconda/interactive-defaults.ks "ostreesetup --nogpg --osname=rockylinux --remote=rockylinux --url=file:///ostree/repo --ref=${default_ref}"
+append usr/share/anaconda/interactive-defaults.ks "firewall --use-system-defaults"
+
+append usr/share/anaconda/interactive-defaults.ks "%post --erroronfail"
+append usr/share/anaconda/interactive-defaults.ks "ostree remote delete rockylinux"
+append usr/share/anaconda/interactive-defaults.ks "ostree remote add --no-gpg-verify rockylinux ${remote_url}"
+append usr/share/anaconda/interactive-defaults.ks "%end"

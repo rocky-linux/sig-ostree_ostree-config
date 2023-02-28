@@ -1,0 +1,30 @@
+# Any workarounds should go here.
+# Please include an explanation of any workaround you implement. Hint: Links are great. :)
+
+packages:
+  - nss-altfiles # see: https://github.com/osbuild/osbuild-composer/issues/1763
+
+postprocess:
+  - |
+    #!/usr/bin/env bash
+    set -xeuo pipefail
+
+    #TODO: Make this an overlay like fedora-coreos - see https://github.com/coreos/fedora-coreos-config/blob/testing-devel/overlay.d/05core/usr/lib/systemd/journald.conf.d/10-coreos-persistent.conf
+    # Work around https://bugzilla.redhat.com/show_bug.cgi?id=1265295
+    # From https://github.com/coreos/fedora-coreos-config/blob/testing-devel/overlay.d/05core/usr/lib/systemd/journald.conf.d/10-coreos-persistent.conf
+    install -dm0755 /usr/lib/systemd/journald.conf.d/
+    echo -e "[Journal]\nStorage=persistent" > /usr/lib/systemd/journald.conf.d/10-persistent.conf
+
+    # See: https://src.fedoraproject.org/rpms/glibc/pull-request/4
+    # Basically that program handles deleting old shared library directories
+    # mid-transaction, which never applies to rpm-ostree. This is structured as a
+    # loop/glob to avoid hardcoding (or trying to match) the architecture.
+    for x in /usr/sbin/glibc_post_upgrade.*; do
+        if test -f ${x}; then
+            ln -srf /usr/bin/true ${x}
+        fi
+    done
+    
+    # THIS IS ONLY NEEDED FOR 8.6 AND LOWER
+    # Workaround for https://github.com/coreos/rpm-ostree/pull/3623 which is not included until rpm-ostree v2022.08
+    # sed -i 's/InaccessiblePaths=/InaccessiblePaths=-/g' /usr/lib/systemd/system/rpm-ostreed.service

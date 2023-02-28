@@ -1,0 +1,7 @@
+# Packages from @Guest Agents
+
+packages:
+# Mandatory
+#  - hyperv-daemons
+#  - open-vm-tools
+#  - qemu-guest-agent  # rpm-ostree compose tree has a hard time finding this (yes I triple checked my repo settings)

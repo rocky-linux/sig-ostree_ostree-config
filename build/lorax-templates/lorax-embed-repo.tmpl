@@ -1,0 +1,9 @@
+<%page args="root, ostree_install_repo, default_ref"/>
+runcmd mkdir ${root}/ostree
+runcmd ostree --repo=${root}/ostree/repo init --mode=bare
+runcmd ostree --repo=${root}/ostree/repo remote add rockylinux --set=gpg-verify=false ${ostree_install_repo}
+runcmd ostree --repo=${root}/ostree/repo pull --mirror rockylinux ${default_ref}
+runcmd ostree --repo=${root}/ostree/repo summary --update
+runcmd chroot ${root} ls /etc/anaconda/product.d/
+runcmd chroot ${root} sed -i '/Subscription/d' /etc/anaconda/product.d/rhel.conf
+runcmd chroot ${root} sed -i 's/efi_dir = redhat/efi_dir = rocky/' /etc/anaconda/product.d/rhel.conf

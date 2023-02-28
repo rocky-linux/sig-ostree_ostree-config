@@ -1,0 +1,33 @@
+[baseos]
+name=Rocky Linux $releasever - BaseOS
+#mirrorlist=https://mirrors.rockylinux.org/mirrorlist?arch=$basearch&repo=BaseOS-$releasever
+baseurl=https://dl.rockylinux.org/pub/rocky/$releasever/BaseOS/$basearch/os/
+gpgcheck=0
+enabled=1
+countme=1
+
+[appstream]
+name=Rocky Linux $releasever - AppStream
+#mirrorlist=https://mirrors.rockylinux.org/mirrorlist?arch=$basearch&repo=AppStream-$releasever
+baseurl=https://dl.rockylinux.org/pub/rocky/$releasever/AppStream/$basearch/os/
+gpgcheck=0
+enabled=1
+countme=1
+
+[altarch-common]
+name=Rocky Linux $releasever - Raspberry Pi
+#mirrorlist=https://mirrors.rockylinux.org/mirrorlist?arch=$basearch&repo=AppStream-$releasever
+baseurl=https://dl.rockylinux.org/pub/sig/$releasever/altarch/aarch64/altarch-common/
+gpgcheck=0
+enabled=1
+countme=1
+
+[altarch-rockyrpi]
+name=Rocky Linux $releasever - Raspberry Pi
+#mirrorlist=https://mirrors.rockylinux.org/mirrorlist?arch=$basearch&repo=AppStream-$releasever
+baseurl=https://dl.rockylinux.org/pub/sig/$releasever/altarch/aarch64/altarch-rockyrpi/
+gpgcheck=0
+enabled=1
+countme=1
+
+#TODO: Define the rest
